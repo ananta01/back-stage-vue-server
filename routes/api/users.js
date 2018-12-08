@@ -102,5 +102,21 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
 
 })
 
+router.get('/identity', passport.authenticate('jwt', {session: false}), (req, res) => {
+  const userInfo = [];
+  User.find({identity: 1})
+    .then(user => {
+      if (user) {
+        for (let i = 0; i < user.length; i++) {
+          userInfo[i] = {};
+          userInfo[i].name = user[i].name;
+          userInfo[i].email = user[i].email;
+          userInfo[i].avatar = user[i].avatar;
+        }
+        res.json(userInfo)
+      }
+    })
+})
+
 
 module.exports = router

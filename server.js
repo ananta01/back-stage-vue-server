@@ -8,6 +8,7 @@ const users = require('./routes/api/users')
 const profiles = require('./routes/api/profiles')
 const monthfile = require('./routes/api/monthfile')
 const usermes = require('./routes/api/usermes')
+const sysnotice = require('./routes/api/sysnotice')
 
 
 const {connect} = require('./config/init')
@@ -30,6 +31,7 @@ app.use('/api/users', users)
 app.use('/api/profiles', profiles)
 app.use('/api/monthfiles', monthfile)
 app.use('/api/usermes', usermes)
+app.use('/api/sysnotice', sysnotice)
 
 const port = process.env.PORT || 8082
 
